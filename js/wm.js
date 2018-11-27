@@ -149,7 +149,7 @@ function alern(text,name,btn,btns){
 	}
 }
 
-var timore;
+var loadingTimore;
 function loading(text){
 	window.onload = function(){
 		if(text == undefined){
@@ -180,21 +180,22 @@ function loading(text){
 		loadDivItem.style.top = '0px';
 		loadDivItem.style.left = '0px';
 		loadDivItem.style.textAlign = 'center';
+		loadDivItem.style.fontSize = '12px';
 		loadDivItem.style.lineHeight = '160px';
 		loadDivItem.style.color = '#ffffff';
 		loadDiv.appendChild(loadDivItem);
 		loadDivItem.innerHTML = text;
 		var loadCount = 0;
-		timore = setInterval(function(){
+		loadingTimore = setInterval(function(){
 			loadCount++;
 			if(loadCount == 1){
-				loadDivItem.innerHTML = text + '.';
+				loadDivItem.innerHTML = text + '●○○';
 			}
 			if(loadCount == 2){
-				loadDivItem.innerHTML = text + '..';
+				loadDivItem.innerHTML = text + '●●○';
 			}
 			if(loadCount == 3){
-				loadDivItem.innerHTML = text + '...';
+				loadDivItem.innerHTML = text + '●●●';
 				loadCount = 0;
 			}
 		},300);
@@ -212,11 +213,14 @@ function loading(text){
 		console.log(body);
 		console.log(load);
 		body.appendChild(load);
+		function loadingClear(){
+			clearInterval(loadingTimore);
+			var body = n('body')[0];
+			var load = c('body_load')[0];
+			body.removeChild(load);
+		}
+		setTimeout(function(){
+			loadingClear();
+		},5000)
 	}
-}
-function loadingClear(){
-	clearInterval(timore);
-	var body = n('body')[0];
-	var load = c('body_load')[0];
-	body.removeChild(load);
 }

@@ -1,0 +1,16 @@
+var menuObject = [
+	{menuid: 100000,parentid: 0,menuname: '首页',menuEn: 'Home',icon: '',src: 'index.html',stop: 1},
+	{menuid: 200000,parentid: 0,menuname: '管理',menuEn: 'Manage',icon: '',src: 'javascript:void(0);',stop: 1},
+	{menuid: 201000,parentid: 200000,menuname: '用户管理',menuEn: 'User',icon: '',src: 'User.html',stop: 1},
+	{menuid: 202000,parentid: 200000,menuname: '权限管理',menuEn: 'Permissions',icon: '',src: 'Permissions.html',stop: 1},
+	{menuid: 203000,parentid: 200000,menuname: '设备导入',menuEn: 'Device',icon: '',src: 'Device.html',stop: 1},
+	{menuid: 204000,parentid: 200000,menuname: '支付配置',menuEn: 'Capital Account',icon: '',src: 'CapitalAccount.html',stop: 1},
+	{menuid: 300000,parentid: 0,menuname: '会员',menuEn: 'Member',icon: '',src: 'javascript:void(0);',stop: 1},
+	{menuid: 301000,parentid: 300000,menuname: '会员类型',menuEn: 'Member Type',icon: '',src: 'MemberType.html',stop: 1},
+	{menuid: 302000,parentid: 300000,menuname: '会员管理',menuEn: 'Member Manage',icon: '',src: 'MemberManage.html',stop: 1},
+	{menuid: 303000,parentid: 300000,menuname: '消费记录',menuEn: 'Expenses Record',icon: '',src: 'ExpensesRecord.html',stop: 1},
+	{menuid: 400000,parentid: 0,menuname: '餐厅',menuEn: 'Restaurant',icon: '',src: 'javascript:void(0);',stop: 1},
+	{menuid: 401000,parentid: 400000,menuname: '商家管理',menuEn: 'Merchant Manage',icon: '',src: 'MerchantManage.html',stop: 1},
+	{menuid: 402000,parentid: 400000,menuname: '设备分配',menuEn: 'Device Allocation',icon: '',src: 'DeviceAllocation.html',stop: 1},
+	{menuid: 403000,parentid: 400000,menuname: '菜单管理',menuEn: 'Menu Manage',icon: '',src: 'MenuManage.html',stop: 1},
+];
