@@ -1,5 +1,5 @@
 document.writeln("<header>");
-document.writeln("	<div class=\'header_logo\'><img src=\'image/logos.jpg\'></div>");
+document.writeln("	<div class=\'header_logo\' onclick=\"location.href='index.html'\"><img src=\'image/logos.jpg\'></div>");
 document.writeln("	<div class=\'header_adorn\'><div class=\'header_adorn_item\'></div><div class=\'header_adorn_item\'></div><div class=\'header_adorn_item\'></div></div>");
 document.writeln("	<div class=\'header_menu\'></div>");
 document.writeln("	<div class=\'header_user\'></div>");
@@ -13,7 +13,7 @@ function headerMenuFun(arrObj){
 	var arrList = [];
 	//菜单栏一级菜单渲染
 	for(var i = 0; i < arrObj.length; i++){
-		if(arrObj[i].parentid == 0){
+		if(arrObj[i].parentid == 0&&arrObj[i].stop == 1){
 			var div = creat('div');
 			var img = creat('img');
 			var span = creat('span');
@@ -29,11 +29,11 @@ function headerMenuFun(arrObj){
 	var headerMenuList = c('header_menu_list');
 	for(var i = 0; i < headerMenuList.length; i++){
 		(function(q){
-			headerMenuList[q].children[1].onmouseover = function(){
-				this.style.color = 'rgba(0,0,0,0.7)';
+			headerMenuList[q].onmouseover = function(){
+				this.children[1].style.color = 'rgba(0,0,0,0.7)';
 			};
-			headerMenuList[q].children[1].onmouseout = function(){
-				this.style.color = 'rgba(0,0,0,0.3)';
+			headerMenuList[q].onmouseout = function(){
+				this.children[1].style.color = 'rgba(0,0,0,0.3)';
 			};
 		})(i)
 	}
@@ -41,5 +41,22 @@ function headerMenuFun(arrObj){
 	divClear.className  = 'clear';
 	headerMenu.appendChild(divClear);
 	//菜单栏二级菜单渲染
+	var headerMenuList = c('header_menu_list');
+	for(var i = 0; i < headerMenuList.length; i++){
+		var ul = creat('ul');
+		ul.className = "header_menu_list_ul";
+		for(var j = 0; j < arrObj.length; j++){
+			if(headerMenuList[i].dataset.menuid == arrObj[j].parentid){
+				var li = creat('li');
+				var a = creat('a');
+				a.innerHTML = arrObj[j].menuname;
+				a.href = arrObj[j].src + "?menuid=" + arrObj[j].menuid;
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		}
+		headerMenuList[i].appendChild(ul);
+	}
+	console.log(headerMenuList);
 }
 headerMenuFun(menuObject);

@@ -164,7 +164,7 @@ function loading(text){
 		load.style.left = '0px';
 		load.style.top = '0px';
 		load.style.backgroundColor = "rgba(0,0,0,0.7)";
-		load.zIndex = '9999999';
+		load.style.zIndex = '9999999';
 		var loadDiv = creat('div');
 		loadDiv.style.width = '160px';
 		loadDiv.style.height = '160px';
@@ -213,14 +213,35 @@ function loading(text){
 		console.log(body);
 		console.log(load);
 		body.appendChild(load);
-		function loadingClear(){
-			clearInterval(loadingTimore);
-			var body = n('body')[0];
-			var load = c('body_load')[0];
-			body.removeChild(load);
+	}
+}
+function loadingClear(){
+	clearInterval(loadingTimore);
+	var body = n('body')[0];
+	var load = c('body_load')[0];
+	body.removeChild(load);
+}
+
+function ajax(type,url,data,succ,error,json,async){
+	var xhr = new XMLHttpRequest ();
+	if(async != true&&async != false){
+		async = true;
+	}
+	xhr.open(type,url,async);
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	console.log(data);
+	xhr.send(data);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				if(json == 'json'){
+					succ(JSON.parse(xhr.responseText));
+				}else{
+					succ(xhr.responseText);
+				}
+			}else{
+				error(xhr.status);
+			}
 		}
-		setTimeout(function(){
-			loadingClear();
-		},5000)
 	}
 }
